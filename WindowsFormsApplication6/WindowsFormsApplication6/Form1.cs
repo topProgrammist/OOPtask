@@ -26,6 +26,20 @@ namespace WindowsFormsApplication6
             figureList.figureAdd(new Triangle(new Point(60, 60), new Point(120, 120), new Point(180, 60)));
             figureList.figureAdd(new Rectangle(new Point(120, 220), 200, 100));
             figureList.figureAdd(new Square(new Point(420, 120), 100));
+
+            figureList.figureAdd(new Ellipse(new Point(20, 20), 200, 100));
+            figureList.figureAdd(new Circle(new Point(120, 120), 100));
+            figureList.figureAdd(new Line(new Point(120, 220), new Point(220, 340)));
+            figureList.figureAdd(new Triangle(new Point(60, 60), new Point(120, 120), new Point(180, 60)));
+            figureList.figureAdd(new Rectangle(new Point(120, 220), 200, 100));
+            figureList.figureAdd(new Square(new Point(420, 120), 100));
+
+            figureList.figureAdd(new Ellipse(new Point(20, 20), 200, 100));
+            figureList.figureAdd(new Circle(new Point(120, 120), 100));
+            figureList.figureAdd(new Line(new Point(120, 220), new Point(220, 340)));
+            figureList.figureAdd(new Triangle(new Point(60, 60), new Point(120, 120), new Point(180, 60)));
+            figureList.figureAdd(new Rectangle(new Point(120, 220), 200, 100));
+            figureList.figureAdd(new Square(new Point(420, 120), 100));
             figureList.drawAllFigures();
         }
     }
