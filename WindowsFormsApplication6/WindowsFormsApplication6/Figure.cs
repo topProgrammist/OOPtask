@@ -11,15 +11,7 @@ namespace WindowsFormsApplication6
 {
     public abstract class Figure
     {
-        private Color blackColor;
-        private Pen blackPen;
-
-        public Figure()
-        {
-            blackColor = Color.Black;
-            Pen blackPen = new Pen(Color.Black, 3);
-            this.blackPen = blackPen;
-        }
+        private Pen blackPen = new Pen(Color.Black, 3);
 
         public Pen getPen()
         { 
