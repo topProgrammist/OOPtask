@@ -20,5 +20,15 @@ namespace WindowsFormsApplication6
         {
             e.DrawLine(getPen(), a, b);
         }
+
+        public void setPoint(Point b)
+        {
+            this.b = b;
+        }
+
+        public void setPointA(Point b)
+        {
+            this.a = b;
+        }
     }
 }

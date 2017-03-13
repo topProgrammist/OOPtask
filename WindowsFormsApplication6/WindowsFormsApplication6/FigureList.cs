@@ -10,8 +10,6 @@ namespace WindowsFormsApplication6
     class FigureList
     {
         private List<Figure> figureList = new List<Figure>();
-        // private Graphics g;
-
         private Graphics g;
 
         public FigureList(Graphics g)

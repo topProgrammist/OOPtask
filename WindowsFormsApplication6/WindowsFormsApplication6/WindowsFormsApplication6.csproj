@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LineDrawer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Polygon.cs" />
     <Compile Include="Shapes\Circle.cs" />
     <Compile Include="Shapes\Ellipse.cs" />
     <Compile Include="Figure.cs" />
