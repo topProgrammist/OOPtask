@@ -15,6 +15,20 @@ namespace WindowsFormsApplication6
             this.Points = new Point[] { a, b, c };
         }
 
+        public Point[] getPoints()
+        {
+            return Points;
+        }
+
+        public void setPoint(int place, Point p)
+        {
+            Points.SetValue(p, place);
+        }
+
+        public Point getMainPoint()
+        {
+            return Points[0];
+        }
         public override void Draw(Graphics e)
         {
             e.DrawPolygon(getPen(), Points);

@@ -46,10 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Drawer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="LineDrawer.cs">
-      <SubType>Form</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Polygon.cs" />
+    <Compile Include="RectangleDrawer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Shapes\Circle.cs" />
     <Compile Include="Shapes\Ellipse.cs" />
     <Compile Include="Figure.cs" />
@@ -66,6 +72,12 @@
     <Compile Include="Shapes\Rectangle.cs" />
     <Compile Include="Shapes\Square.cs" />
     <Compile Include="Shapes\Triangle.cs" />
+    <Compile Include="SquareDrawer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TriangleDrawer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

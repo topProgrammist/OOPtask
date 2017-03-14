@@ -21,5 +21,23 @@ namespace WindowsFormsApplication6
         {
             e.DrawRectangle(getPen(), bot.X, bot.Y, width, height);
         }
+
+        public int Width
+        {
+            get {return width; }
+            set { width = value; }
+        }
+
+        public int Height
+        {
+            get { return height; }
+            set { height = value; }
+        }
+
+        public Point Bot
+        {
+            get { return bot; }
+            set { bot = value; }
+        }
     }
 }

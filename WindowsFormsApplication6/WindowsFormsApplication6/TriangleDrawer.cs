@@ -3,39 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication6
 {
-    class LineDrawer : Drawer
+    class TriangleDrawer : Drawer
     {
         private bool mouseDown = false;
         Bitmap bmp, tempDraw;
         Pen pen = new Pen(Color.Black, 3);
         List<Point> points = new List<Point>();
-        Line line;
-        public LineDrawer(Bitmap bmp) //: base(OnMouseMove, OnMouseDown, OnMouseUp, OnPaint)
+        Triangle trinagle;
+        public TriangleDrawer(Bitmap bmp) 
         {
-            this.bmp = bmp;  
+            this.bmp = bmp;
         }
 
         public override void OnPaint(object sender, PaintEventArgs e)
         {
-            points = line.getCoord();
-            Point[] coord = new Point[2];
-            coord = points.ToArray();
+            Point[] points = trinagle.getPoints();
             tempDraw = (Bitmap)bmp.Clone();
             Graphics temp = Graphics.FromImage(tempDraw);
-            temp.DrawLine(pen, coord[0], coord[1]);
+            temp.DrawPolygon(trinagle.getPen(), points);
             e.Graphics.DrawImageUnscaled(tempDraw, 0, 0);
             temp.Dispose();
         }
 
         public override void OnMouseDown(object sender, MouseEventArgs e)
         {
-            line = new Line(new Point(e.X, e.Y), new Point(e.X, e.Y));
-            tempDraw = (Bitmap)bmp.Clone();
+            trinagle = new Triangle(new Point(e.X, e.Y), new Point(e.X, e.Y), new Point(e.X, e.Y));
             mouseDown = true;
         }
 
@@ -43,7 +40,9 @@ namespace WindowsFormsApplication6
         {
             if (mouseDown)
             {
-                line.setPoint(new Point(e.X, e.Y));
+                Point p = trinagle.getMainPoint();
+                trinagle.setPoint(2, new Point(e.X, e.Y));
+                trinagle.setPoint(1, new Point(e.X - 2*(e.X - p.X), e.Y));
             }
         }
 
@@ -51,11 +50,6 @@ namespace WindowsFormsApplication6
         {
             mouseDown = false;
             bmp = (Bitmap)tempDraw.Clone();
-        }
-        public void DrawLine()
-        {
-            
-        //    figureList.drawAllFigures();
         }
     }
 }

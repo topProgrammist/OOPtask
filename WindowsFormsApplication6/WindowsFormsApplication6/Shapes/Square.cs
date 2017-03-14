@@ -9,7 +9,7 @@ namespace WindowsFormsApplication6
 {
     class Square : Rectangle
     {
-        public Square(Point point, int side) : base(point, side, side)
+        public Square(Point point, int height, int width) : base(point, height, width)
         {
         }
     }
