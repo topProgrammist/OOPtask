@@ -12,19 +12,30 @@ namespace WindowsFormsApplication6
 {
     public partial class Form1 : Form
     {
-        FigureList figureList;
-        Bitmap bmp;
+        public Bitmap bmp;
         bool down = false;
-        Graphics g;
         MouseEventHandler[] mouse = new MouseEventHandler[3];
         PaintEventHandler paint;
+        LineDrawer line;
+        RectangleDrawer rectangle;
+        SquareDrawer square;
+        TriangleDrawer triangle;
+        EllipseDrawer ellipse;
+        CircleDrawer circle;
+        public int keks;
+        Drawer figure;
         public Form1()
         {
             InitializeComponent();
             Graphics g = PaintPanel.CreateGraphics();
             DoubleBuffered = true;
-      //      this.ResizeRedraw = true;
             bmp = new Bitmap(PaintPanel.Width, PaintPanel.Height);
+            line = new LineDrawer(bmp);
+            rectangle = new RectangleDrawer(bmp);
+            square = new SquareDrawer(bmp);
+            triangle = new TriangleDrawer(bmp);
+            ellipse = new EllipseDrawer(bmp);
+            circle = new CircleDrawer(bmp);
         }
 
         private void deleteHandlers()
@@ -40,10 +51,10 @@ namespace WindowsFormsApplication6
 
         private void addHandlers()
         {
-            PaintPanel.MouseDown += new MouseEventHandler(mouse[0]);
-            PaintPanel.MouseMove += new MouseEventHandler(mouse[1]);
-            PaintPanel.MouseUp += new MouseEventHandler(mouse[2]);
-            PaintPanel.Paint += new PaintEventHandler(paint);
+            PaintPanel.MouseDown += mouse[0];
+            PaintPanel.MouseMove += mouse[1];
+            PaintPanel.MouseUp += mouse[2];
+            PaintPanel.Paint += paint;
         }
 
         private void changeHandlers(MouseEventHandler mouseDown, MouseEventHandler mouseMove, MouseEventHandler mouseUp, PaintEventHandler paint)
@@ -53,29 +64,16 @@ namespace WindowsFormsApplication6
             mouse[2] = mouseUp;
             this.paint = paint;
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LineDrawer l1 = new LineDrawer(bmp);
-            PaintPanel.MouseDown += new MouseEventHandler(l1.OnMouseDown);
-            PaintPanel.MouseMove += new MouseEventHandler(l1.OnMouseMove);
-            PaintPanel.MouseUp += new MouseEventHandler(l1.OnMouseUp);
-            PaintPanel.Paint += new PaintEventHandler(l1.OnPaint);
-            l1.MouseMoveEventHandler = l1.OnMouseMove;
-         //   PaintPanel.Paint -= l1.OnPaint;
-            MouseEventHandler mouse = l1.OnMouseDown;
-        //    PaintPanel.MouseDoubleClick -= mouse;
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
-       //     bmp = new Bitmap(PaintPanel.Height, this.ClientRectangle.Height);
+            
         }
 
         private void PaintPanel_MouseUp(object sender, MouseEventArgs e)
         {
             down = false;
-            bmp = new Bitmap(PaintPanel.Width, PaintPanel.Height);
+            
         }
 
 
@@ -93,30 +91,70 @@ namespace WindowsFormsApplication6
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (figure != null)
+                bmp = figure.Bmp;
+            figure = line;
+            line.setBmp(bmp);
+            deleteHandlers();
+            changeHandlers(line.OnMouseDown, line.OnMouseMove, line.OnMouseUp, line.OnPaint);
+            addHandlers();
+        }
         private void button2_Click(object sender, EventArgs e)
         {
-            TriangleDrawer tr = new TriangleDrawer(bmp);
+            if (figure != null)
+                bmp = figure.Bmp;
+            figure = triangle;
+            triangle.setBmp(bmp);
             deleteHandlers();
-            changeHandlers(tr.OnMouseDown,tr.OnMouseMove, tr.OnMouseUp, tr.OnPaint);
+            changeHandlers(triangle.OnMouseDown, triangle.OnMouseMove, triangle.OnMouseUp, triangle.OnPaint);
             addHandlers();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            RectangleDrawer rec = new RectangleDrawer(bmp);
-            PaintPanel.MouseDown += new MouseEventHandler(rec.OnMouseDown);
-            PaintPanel.MouseMove += new MouseEventHandler(rec.OnMouseMove);
-            PaintPanel.MouseUp += new MouseEventHandler(rec.OnMouseUp);
-            PaintPanel.Paint += new PaintEventHandler(rec.OnPaint);
+            if (figure != null)
+                bmp = figure.Bmp;
+            figure = rectangle;
+            rectangle.setBmp(bmp);
+            deleteHandlers();
+            changeHandlers(rectangle.OnMouseDown, rectangle.OnMouseMove, rectangle.OnMouseUp, rectangle.OnPaint);
+            addHandlers();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SquareDrawer sqr = new SquareDrawer(bmp);
-            PaintPanel.MouseDown += new MouseEventHandler(sqr.OnMouseDown);
-            PaintPanel.MouseMove += new MouseEventHandler(sqr.OnMouseMove);
-            PaintPanel.MouseUp += new MouseEventHandler(sqr.OnMouseUp);
-            PaintPanel.Paint += new PaintEventHandler(sqr.OnPaint);
+            if (figure != null)
+                bmp = figure.Bmp;
+            figure = square;
+            square.setBmp(bmp);
+            deleteHandlers();
+            changeHandlers(square.OnMouseDown, square.OnMouseMove, square.OnMouseUp, square.OnPaint);
+            addHandlers();
+            
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (figure != null)
+                bmp = figure.Bmp;
+            figure = ellipse;
+            ellipse.setBmp(bmp);
+            deleteHandlers();
+            changeHandlers(ellipse.OnMouseDown, ellipse.OnMouseMove, ellipse.OnMouseUp, ellipse.OnPaint);
+            addHandlers();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (figure != null)
+                bmp = figure.Bmp;
+            figure = circle;
+            circle.setBmp(bmp);
+            deleteHandlers();
+            changeHandlers(circle.OnMouseDown, circle.OnMouseMove, circle.OnMouseUp, circle.OnPaint);
+            addHandlers();
         }
     }
 }

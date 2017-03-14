@@ -20,6 +20,10 @@ namespace WindowsFormsApplication6
             this.bmp = bmp;
         }
 
+        public void setBmp(Bitmap bmp)
+        {
+            this.bmp = bmp;
+        }
         public override void OnPaint(object sender, PaintEventArgs e)
         {
             Point[] points = trinagle.getPoints();
@@ -36,6 +40,10 @@ namespace WindowsFormsApplication6
             mouseDown = true;
         }
 
+        public Bitmap getBmp()
+        {
+            return bmp;
+        }
         public override void OnMouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
@@ -50,6 +58,7 @@ namespace WindowsFormsApplication6
         {
             mouseDown = false;
             bmp = (Bitmap)tempDraw.Clone();
+            Bmp = bmp;
         }
     }
 }

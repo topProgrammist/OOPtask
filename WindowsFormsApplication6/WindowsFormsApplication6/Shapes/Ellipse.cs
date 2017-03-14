@@ -23,5 +23,23 @@ namespace WindowsFormsApplication6
             RectangleF rect = new RectangleF(point.X, point.Y, width, height);
             e.DrawEllipse(getPen(), rect);
         }
+
+        public int Width
+        {
+            get { return width; }
+            set { width = value; }
+        }
+
+        public int Height
+        {
+            get { return height; }
+            set { height = value; }
+        }
+
+        public Point Point
+        {
+            get { return point; }
+            set { point = value; }
+        }
     }
 }

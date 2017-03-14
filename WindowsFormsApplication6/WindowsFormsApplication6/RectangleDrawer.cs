@@ -20,6 +20,10 @@ namespace WindowsFormsApplication6
             this.bmp = bmp;
         }
 
+        public void setBmp(Bitmap bmp)
+        {
+            this.bmp = bmp;
+        }
         public RectangleDrawer(Bitmap bmp, Rectangle rectangle)
         {
             this.bmp = bmp;
@@ -55,6 +59,7 @@ namespace WindowsFormsApplication6
         {
             Down = false;
             bmp = (Bitmap)tempDraw.Clone();
+            Bmp = bmp;
         }
     }
 }

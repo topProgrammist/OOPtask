@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace WindowsFormsApplication6
 {
     abstract class Drawer : Panel
     {
-        private MouseEventHandler mouseMove, mouseDown, mouseUp;
-        private PaintEventHandler paint;
         private bool down;
-        
+        private Bitmap bmp;
         public abstract void OnPaint(Object sender, PaintEventArgs e);
         public abstract void OnMouseMove(Object sender, MouseEventArgs e);
         public abstract void OnMouseUp(Object sender, MouseEventArgs e);
@@ -24,25 +23,10 @@ namespace WindowsFormsApplication6
             set { down = value; }
         }
 
-        public MouseEventHandler MouseMoveEventHandler
+        public Bitmap Bmp
         {
-            get { return mouseMove; }
-            set { mouseMove = value; }
-        }
-        public MouseEventHandler getMouseDownEventHandler
-        {
-            get { return mouseDown; }
-            set { mouseDown = value; }
-        }
-        public MouseEventHandler getMouseUpEventHandler
-        {
-            get { return mouseUp; }
-            set { mouseUp = value; }
-        }
-        public PaintEventHandler getPaintEventHandler
-        {
-            get { return paint; }
-            set { paint = value; }
+            get { return bmp; }
+            set { bmp = value; }
         }
     }
 }
